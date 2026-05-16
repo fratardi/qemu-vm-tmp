@@ -104,7 +104,7 @@ When the VM is up:
 
 ```bash
 ssh -Ap 2222 ubuntu@localhost
-# password: ubuntu  (defined in cloud-init/user-data)
+# password: ubuntu  (defined in cloud-init/user-data) the A is for sharing the priv keys with ssh agent for git clone
 ```
 
 Useful while it boots:
