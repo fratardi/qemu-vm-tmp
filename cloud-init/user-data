@@ -1,0 +1,43 @@
+#cloud-config
+# vim: syntax=yaml
+#
+# cloud-init user-data for a QEMU test VM.
+# This file is consumed by cloud-init at first boot via the NoCloud datasource
+# (an ISO containing user-data / meta-data attached as a CD-ROM).
+
+hostname: qemu-vm
+manage_etc_hosts: true
+
+# Default user. Password is "ubuntu" (change it!).
+# `lock_passwd: false` is required to allow login with a password.
+users:
+  - name: ubuntu
+    gecos: Ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: [adm, sudo]
+    shell: /bin/bash
+    lock_passwd: false
+    # Generated with:  mkpasswd --method=SHA-512 --rounds=4096
+    # plaintext password = "ubuntu"
+    passwd: "$6$rounds=4096$saltsalt$8wQk2sR5b6lJ0L2D6XHEPdC0xz6kE6Vh3rT9YgPHsf0fOJ4kzwZmFhYxJ8mPq6oU3hY3p0K1qD1m8u0lF5d4N1"
+    ssh_authorized_keys:
+       - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBxiRNnMlXRhQv9cdOUFUNfQCemTlpedTPgmoL0lYolo devo@gonnabereplaced
+
+ssh_pwauth: true
+disable_root: true
+
+# Make sure SSH is on and reachable.
+package_update: true
+package_upgrade: false
+packages:
+  - qemu-guest-agent
+  - curl
+  - vim
+  - htop
+
+# Run something on first boot so you can confirm cloud-init worked.
+runcmd:
+  - [ systemctl, enable, --now, qemu-guest-agent ]
+  - [ sh, -c, "echo 'Hello from cloud-init on $(hostname) at $(date)' > /etc/motd" ]
+
+final_message: "cloud-init finished after $UPTIME seconds. The system is ready."

@@ -1,0 +1,9 @@
+version: 2
+ethernets:
+  # Match any ethernet interface and request DHCP.
+  # QEMU's user-mode networking (SLIRP) provides a DHCP server on 10.0.2.x.
+  alleths:
+    match:
+      name: "e*"
+    dhcp4: true
+    dhcp6: false
