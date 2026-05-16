@@ -1,6 +1,5 @@
 # Qemu-init — Boot a cloud image under QEMU with cloud-init
 
-A tiny, self-contained example showing how to:
 
 1. Write a **cloud-init** configuration (`user-data`, `meta-data`, `network-config`).
 2. Package it as a **NoCloud seed ISO** (`seed.iso`).
