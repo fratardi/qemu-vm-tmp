@@ -8,6 +8,8 @@
 #   --vm     only delete the overlay disk
 # (default: delete seed.iso and the overlay disk, keep the base image)
 
+KNOWN_HOSTS="/home/fratardi/.ssh/known_hosts"
+
 set -euo pipefail
 source "$(dirname -- "${BASH_SOURCE[0]}")/config.sh"
 
@@ -44,7 +46,10 @@ case "${mode}" in
              if [[ -d "${WORKDIR}" ]]; then
                  log "Removing working directory: ${WORKDIR}"
                  rm -rf -- "${WORKDIR}"
+                 log "Removing old ssh known hosts @: ${KNOWN_HOSTS}"
+                 rm -rf -- "${KNOWN_HOSTS}"
              fi ;;
+
 esac
 
 log "Clean done (mode=${mode})."
