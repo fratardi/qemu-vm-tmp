@@ -83,7 +83,7 @@ ssh:
 	@ssh -p $(SSH_PORT_VAL) \
 	     -o StrictHostKeyChecking=no \
 	     -o UserKnownHostsFile=/dev/null \
-	     ubuntu@localhost
+	     dev@localhost
 
 serial:
 	@if [[ ! -f "$(VM_SERIAL_LOG_VAL)" ]]; then \
@@ -105,7 +105,7 @@ status:
 	@echo "workdir : $(WORKDIR_VAL)"; \
 	echo "pidfile : $(VM_PID_FILE_VAL)"; \
 	echo "serial  : $(VM_SERIAL_LOG_VAL)"; \
-	echo "ssh     : ssh -Ap $(SSH_PORT_VAL) ubuntu@localhost"; \
+	echo "ssh     : ssh -Ap $(SSH_PORT_VAL) dev@localhost"; \
 	if [[ -f "$(VM_PID_FILE_VAL)" ]] && kill -0 "$$(cat $(VM_PID_FILE_VAL))" 2>/dev/null; then \
 	    echo "status  : running (PID $$(cat $(VM_PID_FILE_VAL)))"; \
 	else \

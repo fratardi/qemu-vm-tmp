@@ -100,7 +100,7 @@ cat <<EOF
    seed    : ${SEED_ISO}
    mem     : ${VM_MEM} MiB
    cpus    : ${VM_CPUS}
-   ssh     : ssh -p ${SSH_PORT} ubuntu@localhost   (password: ubuntu)
+   ssh     : ssh -p ${SSH_PORT} dev@localhost   (password: ubuntu)
    display : ${DISPLAY_MODE}
 EOF
 if [[ "${VM_FOREGROUND}" == "1" ]]; then

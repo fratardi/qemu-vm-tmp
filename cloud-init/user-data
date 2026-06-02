@@ -11,7 +11,7 @@ manage_etc_hosts: true
 # Default user. Password is "ubuntu" (change it!).
 # `lock_passwd: false` is required to allow login with a password.
 users:
-  - name: ubuntu
+  - name: dev
     gecos: Ubuntu
     sudo: ALL=(ALL) NOPASSWD:ALL
     groups: [adm, sudo]
@@ -34,6 +34,8 @@ packages:
   - curl
   - vim
   - htop
+  - make
+  - gcc
 
 # Run something on first boot so you can confirm cloud-init worked.
 runcmd:
