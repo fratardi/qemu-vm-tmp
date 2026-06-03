@@ -22,7 +22,6 @@
 # Examples:
 #   SSH_PUBKEY_FILE=$HOME/.ssh/id_ed25519.pub ./inject-key.sh
 #   SSH_PUBKEY="ssh-ed25519 AAAA... me@host"  ./inject-key.sh
-#   ./inject-key.sh                       # no key, just stage the file
 
 set -euo pipefail
 source "$(dirname -- "${BASH_SOURCE[0]}")/config.sh"

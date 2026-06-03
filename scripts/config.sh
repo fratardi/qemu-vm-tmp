@@ -51,7 +51,7 @@ chmod 0700 "${IMAGES_DIR}" 2>/dev/null || true
 # ---- VM resources -----------------------------------------------------------
 export VM_DISK_SIZE="${VM_DISK_SIZE:-10G}"   # virtual size of the overlay disk
 export VM_MEM="${VM_MEM:-2048}"              # MiB
-export VM_CPUS="${VM_CPUS:-2}"
+export VM_CPUS="${VM_CPUS:-4}"
 export SSH_PORT="${SSH_PORT:-2222}"          # host port forwarded to guest:22
 
 # ---- Pretty logging ---------------------------------------------------------
